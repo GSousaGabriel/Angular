@@ -1,0 +1,10 @@
+<div>
+  <app-game-control (gameStarted)="gameOn($event)"></app-game-control>
+</div>
+<hr />
+<div>
+  <div *ngIf="number % 2 === 0;else odd">
+    <app-even [even]="number"></app-even>
+  </div>
+  <ng-template #odd><app-odd [odd]="number"></app-odd></ng-template>
+</div>
