@@ -5,3 +5,11 @@
 .even {
   color: red
 }
+
+.open ul{
+  display: block;
+}
+
+.closed{
+  display: none;
+}

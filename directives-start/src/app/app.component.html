@@ -1,16 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <button
-        class="btn btn-primary"
-        (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
       <br><br>
       <ul class="list-group">
-        <li
-          class="list-group-item"
-          [ngClass]= "{even: number % 2===0}"
-          [ngStyle]= "{backgroundColor: number % 2===0 ? 'lightpink' : 'red'}"
-          *ngFor="let number of numbers">
+        <li class="list-group-item" [ngClass]="{even: number % 2===0}"
+          [ngStyle]="{backgroundColor: number % 2===0 ? 'lightpink' : 'red'}" *ngFor="let number of numbers">
           {{number}}
         </li>
       </ul>
@@ -19,14 +14,23 @@
       <!-- <ng-template [ngIf]="onlyOdd">
         <p>Only odd</p>
       </ng-template> -->
-        <p *appUnless="onlyOdd">Only odd</p>
-        <div [ngSwitch]="value">
-          <p *ngSwitchCase="5">value is 5</p>
-          <p *ngSwitchCase="15">value is 15</p>
-          <p *ngSwitchCase="25">value is 25</p>
-          <p *ngSwitchCase="35">value is 35</p>
-          <p *ngSwitchDefault>value is Default</p>
-        </div>
+      <p *appUnless="onlyOdd">Only odd</p>
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">value is 5</p>
+        <p *ngSwitchCase="15">value is 15</p>
+        <p *ngSwitchCase="25">value is 25</p>
+        <p *ngSwitchCase="35">value is 35</p>
+        <p *ngSwitchDefault>value is Default</p>
+      </div>
+      <ul>
+        <li appDropdown>
+          open
+          <ul class="closed">
+            <li>test</li>
+            <li>test2</li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
