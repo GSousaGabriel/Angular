@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  filteredStatus: string
+  appStatus: Promise<string> | string = 'Loading...'
+
   servers = [
     {
       instanceType: 'medium',
@@ -32,11 +35,31 @@ export class AppComponent {
       started: new Date(15, 1, 2017)
     }
   ];
-  getStatusClasses(server: {instanceType: string, name: string, status: string, started: Date}) {
+
+ngOnInit(): void {
+  this.appStatus= new Promise((res, rej)=>{
+    setTimeout(()=>{
+      res('stable')
+    }, 1000)
+  })
+}
+
+  getStatusClasses(server: { instanceType: string, name: string, status: string, started: Date }) {
     return {
       'list-group-item-success': server.status === 'stable',
       'list-group-item-warning': server.status === 'offline',
       'list-group-item-danger': server.status === 'critical'
     };
+  }
+
+  addServer(){
+    this.servers.push(
+      {
+        instanceType: 'Big',
+        name: 'Production',
+        status: 'stable',
+        started: new Date(15, 1, 2017)
+      }
+    )
   }
 }
